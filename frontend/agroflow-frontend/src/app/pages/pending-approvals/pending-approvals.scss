@@ -1,0 +1,212 @@
+.approvals-page {
+  min-height: calc(100vh - 64px);
+  padding: 2rem;
+  box-sizing: border-box;
+
+  background: #0b0f14;
+  color: #f4f4f5;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+
+  color: #d4a843;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+}
+
+.page-header h1 {
+  margin: 0;
+
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  margin: 0.5rem 0 0;
+
+  color: #8995a3;
+
+  font-size: 0.85rem;
+}
+
+.pending-count {
+  padding: 0.65rem 0.9rem;
+
+  border: 1px solid #3a3020;
+
+  border-radius: 7px;
+
+  background: rgba(212, 168, 67, 0.08);
+
+  color: #d4a843;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+}
+
+.approvals-card {
+  background: #111820;
+
+  border: 1px solid #26313d;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 1.25rem;
+
+  border-bottom: 1px solid #26313d;
+}
+
+.card-header h2 {
+  margin: 0;
+
+  font-size: 1rem;
+}
+
+.card-header p {
+  margin: 0.35rem 0 0;
+
+  color: #657281;
+
+  font-size: 0.72rem;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  min-width: 1050px;
+
+  border-collapse: collapse;
+}
+
+th {
+  padding: 0.9rem 1rem;
+
+  background: #0e141b;
+
+  color: #657281;
+
+  font-size: 0.65rem;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.04em;
+}
+
+td {
+  padding: 1rem;
+
+  border-top: 1px solid #202a34;
+
+  color: #aeb7c1;
+
+  font-size: 0.72rem;
+}
+
+td strong {
+  color: #f4f4f5;
+}
+
+.request-name strong,
+.request-name span {
+  display: block;
+}
+
+.request-name span {
+  margin-top: 0.3rem;
+
+  color: #657281;
+
+  font-size: 0.65rem;
+}
+
+.priority {
+  color: #d4a843;
+}
+
+.status {
+  display: inline-block;
+
+  padding: 0.35rem 0.65rem;
+
+  border-radius: 999px;
+
+  background: rgba(212, 168, 67, 0.12);
+
+  color: #d4a843;
+
+  font-size: 0.62rem;
+
+  font-weight: 700;
+}
+
+.view-button {
+  padding: 0.55rem 0.8rem;
+
+  border: 1px solid #35414e;
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #c8d0d8;
+
+  font-size: 0.7rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.view-button:hover {
+  border-color: #d4a843;
+
+  color: #d4a843;
+}
+
+@media (max-width: 700px) {
+
+  .approvals-page {
+    padding: 1rem;
+  }
+
+  .page-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+}

@@ -1,0 +1,20 @@
+# Angular
+frontend/agroflow-frontend/node_modules/
+frontend/agroflow-frontend/dist/
+frontend/agroflow-frontend/.angular/
+# Spring Boot / Mavan
+frontend/agroflow-backend/target/
+*.class
+# IDE
+.vscode/
+.idea/
+*.iml
+# Logs
+*.log
+#OS files
+.DS_Store
+Thumbs.db
+#Environment / secrets
+.env
+.env.*
+!.env.example

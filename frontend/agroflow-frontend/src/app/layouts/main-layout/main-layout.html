@@ -1,0 +1,111 @@
+<div class="app-shell">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-logo">AF</div>
+
+      <div>
+        <h1>AgroFlow</h1>
+        <span>Approval Platform</span>
+      </div>
+    </div>
+
+    <nav class="navigation">
+
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a routerLink="/requests" routerLinkActive="active">
+        <span class="nav-icon">▤</span>
+        <span>My Requests</span>
+      </a>
+
+      <a routerLink="/approvals" routerLinkActive="active">
+        <span class="nav-icon">✓</span>
+        <span>Pending Approvals</span>
+      </a>
+
+      <a routerLink="/new-request" routerLinkActive="active">
+        <span class="nav-icon">+</span>
+        <span>New Request</span>
+      </a>
+
+      <div class="nav-section">MODULES</div>
+
+      <a href="javascript:void(0)">
+        <span class="nav-icon">◈</span>
+        <span>Procurement</span>
+      </a>
+
+      <a href="javascript:void(0)">
+        <span class="nav-icon">◉</span>
+        <span>Finance</span>
+      </a>
+
+      <a href="javascript:void(0)">
+        <span class="nav-icon">▣</span>
+        <span>Budget</span>
+      </a>
+
+      <a href="javascript:void(0)">
+        <span class="nav-icon">◆</span>
+        <span>Transport</span>
+      </a>
+
+      <a href="javascript:void(0)">
+        <span class="nav-icon">♙</span>
+        <span>HR</span>
+      </a>
+
+      <a href="javascript:void(0)">
+        <span class="nav-icon">◇</span>
+        <span>Projects</span>
+      </a>
+
+      <a routerLink="/reports" routerLinkActive="active">
+        <span class="nav-icon">▥</span>
+        <span>Reports</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-avatar">D</div>
+
+      <div class="user-info">
+        <strong>Demo User</strong>
+        <span>Employee</span>
+      </div>
+    </div>
+
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+
+      <div>
+        <span class="system-title">Approval &amp; Workflow Management</span>
+      </div>
+
+      <div class="topbar-actions">
+        <span class="notification">🔔</span>
+
+        <div class="top-user">
+          <span class="user-avatar small">D</span>
+          <span>Demo User</span>
+        </div>
+      </div>
+
+    </header>
+
+    <section class="page-content">
+      <router-outlet></router-outlet>
+    </section>
+
+  </main>
+
+</div>

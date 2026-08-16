@@ -1,0 +1,213 @@
+<div class="approvals-page">
+
+  <div class="page-header">
+
+    <div>
+      <p class="eyebrow">APPROVAL WORKFLOW</p>
+
+      <h1>Pending Approvals</h1>
+
+      <p class="subtitle">
+        Review requests waiting for your approval.
+      </p>
+    </div>
+
+    <div class="pending-count">
+      {{ approvals.length }} Pending
+    </div>
+
+  </div>
+
+  <div class="approvals-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>Requests Awaiting Approval</h2>
+
+        <p>
+          Review each request before approving or rejecting it.
+        </p>
+      </div>
+
+    </div>
+
+    @if (isLoading) {
+
+      <div class="loading-message">
+        Loading pending approvals...
+      </div>
+
+    } @else if (errorMessage) {
+
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+
+    } @else {
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Request</th>
+              <th>Description</th>
+              <th>Submitted By</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for (approval of approvals; track approval.id) {
+
+              <tr>
+
+                <td>
+                  <strong>REQ-{{ approval.id }}</strong>
+                </td>
+
+                <td>
+                  <div class="request-name">
+                    <strong>{{ approval.requestType }}</strong>
+                    <span>Request</span>
+                  </div>
+                </td>
+
+                <td>
+                  {{ approval.description }}
+                </td>
+
+                <td>
+                  {{ approval.employeeName }}
+                </td>
+
+                <td>
+                  <span class="status">
+                    {{ approval.status }}
+                  </span>
+                </td>
+
+                <td>
+
+                  <button
+                    type="button"
+                    class="view-button"
+                    (click)="selectApproval(approval)">
+                    View
+                  </button>
+
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+        @if (selectedApproval) {
+
+          <div class="approval-overlay">
+
+            <div class="approval-modal">
+
+              <div class="modal-header">
+
+                <div>
+                  <p class="eyebrow">REQUEST REVIEW</p>
+
+                  <h2>Approval Details</h2>
+                </div>
+
+                <button
+                  type="button"
+                  class="close-button"
+                  (click)="selectedApproval = null">
+                  ×
+                </button>
+
+              </div>
+
+              <div class="request-details">
+
+                <div class="detail-item">
+                  <span>Request ID</span>
+                  <strong>REQ-{{ selectedApproval.id }}</strong>
+                </div>
+
+                <div class="detail-item">
+                  <span>Request</span>
+                  <strong>{{ selectedApproval.requestType }}</strong>
+                </div>
+
+                <div class="detail-item">
+                  <span>Description</span>
+                  <strong>{{ selectedApproval.description }}</strong>
+                </div>
+
+                <div class="detail-item">
+                  <span>Submitted By</span>
+                  <strong>{{ selectedApproval.employeeName }}</strong>
+                </div>
+
+                <div class="detail-item">
+                  <span>Current Status</span>
+                  <strong>{{ selectedApproval.status }}</strong>
+                </div>
+
+                <div class="detail-item">
+                  <span>Created At</span>
+                  <strong>{{ selectedApproval.createdAt }}</strong>
+                </div>
+
+              </div>
+
+              @if (actionErrorMessage) {
+
+                <div class="error-message">
+                  {{ actionErrorMessage }}
+                </div>
+
+              }
+
+              @if (selectedApproval.status === 'Pending') {
+
+                <div class="approval-actions">
+
+                  <button
+                    type="button"
+                    class="reject-button"
+                    (click)="rejectRequest()">
+                    Reject
+                  </button>
+
+                  <button
+                    type="button"
+                    class="approve-button"
+                    (click)="approveRequest()">
+                    Approve
+                  </button>
+
+                </div>
+
+              }
+
+            </div>
+
+          </div>
+
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+</div>

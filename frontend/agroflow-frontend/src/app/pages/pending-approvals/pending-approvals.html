@@ -1,0 +1,104 @@
+<div class="approvals-page">
+
+  <div class="page-header">
+
+    <div>
+      <p class="eyebrow">APPROVAL WORKFLOW</p>
+
+      <h1>Pending Approvals</h1>
+
+      <p class="subtitle">
+        Review requests waiting for your approval.
+      </p>
+    </div>
+
+    <div class="pending-count">
+      {{ approvals.length }} Pending
+    </div>
+
+  </div>
+
+  <div class="approvals-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>Requests Awaiting Approval</h2>
+
+        <p>
+          Review each request before approving or rejecting it.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="table-container">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Request ID</th>
+            <th>Request</th>
+            <th>Description</th>
+            <th>Submitted By</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @for (approval of approvals; track approval.id) {
+
+            <tr>
+
+              <td>
+                <strong>REQ-{{ approval.id }}</strong>
+              </td>
+
+              <td>
+                <div class="request-name">
+                  <strong>{{ approval.requestType }}</strong>
+                  <span>Request</span>
+                </div>
+              </td>
+
+              <td>
+                {{ approval.description }}
+              </td>
+
+              <td>
+                {{ approval.employeeName }}
+              </td>
+
+              <td>
+                <span class="status">
+                  {{ approval.status }}
+                </span>
+              </td>
+
+              <td>
+
+                <button
+                  type="button"
+                  class="view-button"
+                  (click)="viewRequest(approval.id)">
+                  View
+                </button>
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

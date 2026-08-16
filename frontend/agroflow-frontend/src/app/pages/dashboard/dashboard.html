@@ -1,0 +1,178 @@
+<div class="dashboard-page">
+
+  <header class="dashboard-header">
+
+    <div>
+      <p class="eyebrow">AGROFLOW ENTERPRISE</p>
+
+      <h1>Dashboard</h1>
+
+      <p class="subtitle">
+        Overview of your requests and approval activities
+      </p>
+    </div>
+
+    <a
+      routerLink="/new-request"
+      class="new-request-button">
+      + New Request
+    </a>
+
+  </header>
+
+  @if (isLoading) {
+
+    <div class="loading-message">
+      Loading dashboard data...
+    </div>
+
+  } @else if (errorMessage) {
+
+    <div class="error-message">
+      {{ errorMessage }}
+    </div>
+
+  } @else {
+
+    <section class="stats-grid">
+
+      <div class="stat-card">
+        <div class="stat-label">Total Requests</div>
+        <div class="stat-value">{{ totalRequests }}</div>
+        <div class="stat-description">All submitted requests</div>
+      </div>
+
+      <div class="stat-card pending">
+        <div class="stat-label">Pending Approvals</div>
+        <div class="stat-value">{{ pendingRequests }}</div>
+        <div class="stat-description">Require your attention</div>
+      </div>
+
+      <div class="stat-card approved">
+        <div class="stat-label">Approved</div>
+        <div class="stat-value">{{ approvedRequests }}</div>
+        <div class="stat-description">Successfully approved</div>
+      </div>
+
+      <div class="stat-card rejected">
+        <div class="stat-label">Rejected</div>
+        <div class="stat-value">{{ rejectedRequests }}</div>
+        <div class="stat-description">Rejected requests</div>
+      </div>
+
+    </section>
+
+    <section class="dashboard-grid">
+
+      <div class="panel">
+
+        <div class="panel-header">
+
+          <div>
+            <h2>Recent Requests</h2>
+            <p>Latest activity in the approval system</p>
+          </div>
+
+          <a routerLink="/requests">View All</a>
+
+        </div>
+
+        <div class="request-list">
+
+          @for (
+            request of requests.slice(0, 5);
+            track request.id
+          ) {
+
+            <div class="request-row">
+
+              <div>
+                <strong>REQ-{{ request.id }}</strong>
+                <span>{{ request.requestType }}</span>
+              </div>
+
+              <span
+                class="status"
+                [class.pending-status]="request.status?.toLowerCase() === 'pending'"
+                [class.approved-status]="request.status?.toLowerCase() === 'approved'"
+                [class.rejected-status]="request.status?.toLowerCase() === 'rejected'">
+                {{ request.status }}
+              </span>
+
+            </div>
+
+          }
+
+          @if (requests.length === 0) {
+
+            <div class="empty-message">
+              No requests found.
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+      <div class="panel">
+
+        <div class="panel-header">
+
+          <div>
+            <h2>Quick Actions</h2>
+            <p>Frequently used actions</p>
+          </div>
+
+        </div>
+
+        <div class="quick-actions">
+
+          <a
+            routerLink="/new-request"
+            class="quick-action">
+
+            <span class="action-icon">+</span>
+
+            <div>
+              <strong>New Request</strong>
+              <small>Create a new approval request</small>
+            </div>
+
+          </a>
+
+          <a
+            routerLink="/approvals"
+            class="quick-action">
+
+            <span class="action-icon">✓</span>
+
+            <div>
+              <strong>Pending Approvals</strong>
+              <small>Review requests awaiting approval</small>
+            </div>
+
+          </a>
+
+          <a
+            routerLink="/requests"
+            class="quick-action">
+
+            <span class="action-icon">≡</span>
+
+            <div>
+              <strong>My Requests</strong>
+              <small>View requests you submitted</small>
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  }
+
+</div>

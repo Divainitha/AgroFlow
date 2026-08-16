@@ -1,0 +1,114 @@
+<div class="requests-page">
+
+  <div class="page-header">
+
+    <div>
+      <p class="eyebrow">REQUEST MANAGEMENT</p>
+
+      <h1>My Requests</h1>
+
+      <p class="subtitle">
+        View and track requests submitted by you.
+      </p>
+    </div>
+
+    <a
+      routerLink="/new-request"
+      class="new-button">
+      + New Request
+    </a>
+
+  </div>
+
+  <div class="requests-card">
+
+    <div class="card-header">
+
+      <div>
+        <h2>Request History</h2>
+
+        <p>
+          All requests submitted through AgroFlow.
+        </p>
+      </div>
+
+      <span class="request-count">
+        {{ requests.length }} Requests
+      </span>
+
+    </div>
+
+    @if (isLoading) {
+
+      <div class="loading-message">
+        Loading requests...
+      </div>
+
+    } @else if (errorMessage) {
+
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+
+    } @else {
+
+      <div class="table-container">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Request ID</th>
+              <th>Request</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            @for (request of requests; track request.id) {
+
+              <tr>
+
+                <td>
+                  <strong>REQ-{{ request.id }}</strong>
+                </td>
+
+                <td>
+                  <div class="request-name">
+                    <strong>{{ request.requestType }}</strong>
+                    <span>Request</span>
+                  </div>
+                </td>
+
+                <td>
+                  {{ request.description }}
+                </td>
+
+                <td>
+                  <span class="status">
+                    {{ request.status }}
+                  </span>
+                </td>
+
+                <td>
+                  {{ request.createdAt | date:'dd MMM yyyy' }}
+                </td>
+
+              </tr>
+
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    }
+
+  </div>
+
+</div>
