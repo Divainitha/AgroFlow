@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://YOUR-RENDER-BACKEND-URL'
+  apiUrl: 'https://agroflow-backend-a9ul.onrender.com'
 };
